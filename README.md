@@ -66,6 +66,12 @@ This skill enforces [Conventional Commits](https://www.conventionalcommits.org/)
 ✔️ A blank line between header and body (if body exists)
 ✔️ Footer lines must follow `<Key>: <Value>` format
 
+## Installation
+
+```bash
+npx skills add git@github.com:Youpen-y/commit-skill.git
+```
+
 ## Usage
 
 ```bash
