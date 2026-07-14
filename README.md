@@ -59,18 +59,31 @@ This skill enforces [Conventional Commits](https://www.conventionalcommits.org/)
 ### Validation Rules
 
 ✔️ Type must be one of the allowed list
+
 ✔️ `: ` separator must be present
+
 ✔️ Description must not be empty
+
 ✔️ Description must start with a lowercase letter
+
 ✔️ Description must not end with a period
+
 ✔️ A blank line between header and body (if body exists)
+
 ✔️ Footer lines must follow `<Key>: <Value>` format
 
 ## Installation
 
 ```bash
-npx skills add git@github.com:Youpen-y/commit-skill.git
+# Install (global)
+mkdir -p ~/.agents/skills
+git clone https://github.com/Youpen-y/commit-skill ~/.agents/skills/commit
+
+# Uninstall
+rm -rf ~/.agents/skills/commit
 ```
+
+> Try `npx skills` for specific agent.
 
 ## Usage
 
