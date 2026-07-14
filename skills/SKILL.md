@@ -44,10 +44,10 @@ Do **not** `git add .` or `git add -A`. Stage only the files relevant to this co
 
 ### 3. Compose and validate the message
 
-Analyze the staged diff (`git diff --cached`) and compose a commit message. Validate it:
+Analyze the staged diff (`git diff --cached`) and compose a commit message. Validate it with `validate.sh`, which lives next to this `SKILL.md`. Run it by the absolute path resolved against the **skill directory**:
 
 ```bash
-./validate.sh "<message>"
+/path/to/skill-dir/validate.sh "<message>"
 ```
 
 If validation fails, fix the message and re-validate.
