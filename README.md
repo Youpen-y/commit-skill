@@ -7,10 +7,11 @@
 `commit-skill` is a skill that guides you through making clean, well-structured git commits. Instead of dumping everything into one big commit, it helps you:
 
 1. **Check changes** — inspect `git status` to see what's modified
-2. **Group logically** — stage only files for **one coherent change** at a time (no `git add .`)
-3. **Compose message** — write a commit message following the Conventional Commit spec
-4. **Validate format** — run `validate.sh` to check the message; fix it if it fails
-5. **Commit & repeat** — commit the batch, then loop back for remaining changes
+2. **Split into logical units** — group changes by concern, splitting across files *and within a file* via hunk-level staging; order by dependency so each commit builds on the last (no `git add .`)
+3. **Verify each split** — confirm every intermediate commit compiles and passes tests before committing
+4. **Compose message** — write a commit message following the Conventional Commit spec
+5. **Validate format** — run `validate.sh` to check the message; fix it if it fails
+6. **Commit & repeat** — commit the batch, then loop back for remaining changes
 
 ## Directory Structure
 
@@ -93,6 +94,16 @@ git status --short
 
 # Stage files for a single logical change
 git add <file1> <file2>
+
+# When a file mixes concerns, stage individual hunks via a patch
+git diff -- <file>                       # inspect the hunks
+# ...write only this unit's hunks to /tmp/unit.patch...
+git apply --cached --recount /tmp/unit.patch
+
+# Verify the would-be commit builds and tests pass
+git stash push --keep-index --include-untracked
+#   <build> && <test>
+git stash pop
 
 # Preview the staged diff
 git diff --cached
